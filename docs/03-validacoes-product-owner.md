@@ -158,6 +158,16 @@ As perguntas foram identificadas a partir das lacunas do cenário apresentado. A
 
 **Premissa adotada:** A proposta se concentra nos requisitos funcionais. Os requisitos não funcionais deverão ser levantados antes do desenvolvimento.
 
+### VP16 — Como serão definidos os perfis e as permissões de acesso?
+
+Pergunta: Quais perfis de acesso existirão no sistema? Quais operações cada perfil poderá executar? Um usuário poderá possuir múltiplos perfis? Quem poderá associar ou remover perfis dos usuários?
+
+Por que validar: A definição dos perfis e das permissões determina quais funcionalidades estarão disponíveis para cada usuário e quais dados poderão ser consultados ou alterados. Sem essas regras, não é possível validar completamente o controle de acesso.
+
+Impactos: US12; US01, US02, US04, US05, US06, US07, US08, US09, US10 e US11; processo BPMN; modelo de dados; regras de autorização e testes de acesso.
+
+Premissa adotada: O sistema utilizará permissões associadas a perfis, com validação de autorização antes da execução das ações protegidas. A matriz de permissões, o escopo de consulta e a administração dos perfis deverão ser definidos com o PO.
+
 ## 3. Premissas adotadas para elaborar a proposta
 
 As premissas abaixo foram utilizadas para permitir que o fluxo e o backlog fossem definidos mesmo sem acesso aos stakeholders:
