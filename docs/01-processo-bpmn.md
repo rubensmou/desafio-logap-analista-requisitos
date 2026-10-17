@@ -15,6 +15,7 @@ A modelagem considera os participantes, as decisões, as regras de negócio e as
 | Responsável pela triagem | Analisar, classificar, priorizar e direcionar as solicitações. |
 | Responsável pelo atendimento | Executar o serviço e registrar o resultado. |
 | Gestor | Consultar as solicitações e o histórico dos atendimentos. |
+| Administrador do sistema | Gerenciar a associação de perfis aos usuários, conforme as permissões autorizadas. |
 
 Os papéis são uma proposta funcional. Uma mesma pessoa poderá exercer mais de uma função, conforme a estrutura da empresa. As permissões de cada perfil deverão ser validadas com o Product Owner (PO).
 
@@ -87,6 +88,7 @@ Os status e as transições permitidas são propostas iniciais e deverão ser va
 - **RN08:** as mudanças relevantes de status devem ser registradas no histórico.
 - **RN09:** solicitações pendentes de informações devem permitir complementação sem perda dos dados anteriores.
 - **RN10:** cancelamentos e outros encerramentos devem respeitar regras de autorização.
+- **RN11:** o acesso às funcionalidades e aos dados deve respeitar as permissões associadas ao usuário. Ações não autorizadas devem ser bloqueadas sem alterar os dados ou o estado da solicitação.
 
 ## 7. Exceções e situações a considerar
 
@@ -97,6 +99,8 @@ Os status e as transições permitidas são propostas iniciais e deverão ser va
 - Cancelamento após o registro.
 - Reabertura de solicitação concluída.
 - Falha ao registrar uma atualização.
+- Tentativa de acesso ou execução de ação sem a permissão necessária.
+- Tentativa de alteração de dados por usuário inativo ou fora de seu escopo autorizado.
 
 Essas situações exigem regras específicas antes da implementação. O tratamento de duplicidades, reaberturas e falhas ainda não está definido.
 
@@ -108,7 +112,7 @@ Essas situações exigem regras específicas antes da implementação. O tratame
 
 ## 9. Diagrama BPMN
 
-O diagrama deve representar o fluxo descrito neste documento, com raias para Solicitante, Sistema, Triagem e Responsável pelo Atendimento.
+O diagrama deve representar o fluxo descrito neste documento, com raias para Solicitante, Sistema, Triagem e Responsável pelo Atendimento. O processo deve considerar a verificação de autorização pelo sistema antes da execução de ações protegidas. Quando o acesso for negado, a ação deve ser interrompida sem alteração do estado da solicitação. Essa verificação é transversal ao processo e não exige a repetição de um gateway em cada tarefa, desde que o controle esteja representado ou documentado de forma inequívoca.
 
 Devem ser utilizados eventos de início e fim, tarefas, gateways exclusivos para decisões e fluxos de sequência.
 
