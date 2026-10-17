@@ -74,6 +74,26 @@ As situações de espera por peças, dependência de terceiros e necessidade de 
 | Concluída | Serviço realizado e resultado registrado. |
 | Cancelada | Solicitação encerrada sem execução, conforme regra autorizada. |
 
+### Regras de transição de status
+
+As solicitações de manutenção devem seguir transições de status previamente definidas. O sistema não deve permitir mudanças de status incompatíveis com o fluxo do processo ou com as permissões do usuário.
+
+| Status atual | Ação ou condição | Próximo status |
+|---|---|---|
+| Aberta | Iniciar análise | Em triagem |
+| Em triagem | Solicitar complementação | Pendente de informações |
+| Pendente de informações | Registrar complementação | Em triagem |
+| Em triagem | Definir responsável ou equipe | Atribuída |
+| Atribuída | Iniciar atendimento | Em atendimento |
+| Em atendimento | Registrar conclusão | Concluída |
+
+**Regras complementares**
+
+- Toda mudança de status deve registrar o usuário responsável, a data e hora e os status anterior e posterior no histórico da solicitação.
+- Transições não previstas devem ser bloqueadas pelo sistema.
+- O cancelamento e o impedimento devem respeitar as condições e permissões definidas para cada situação.
+- As transições permitidas, as condições de conclusão e as regras de cancelamento devem ser validadas com o Product Owner.
+
 Os status e as transições permitidas são propostas iniciais e deverão ser validados com o PO.
 
 ## 6. Regras de negócio
