@@ -111,6 +111,73 @@ Representa a associação entre usuários e equipes, caso um usuário possa pert
 
 Caso a Vértice utilize apenas uma equipe por usuário, esse relacionamento poderá ser simplificado após a validação do cenário real.
 
+### 2.7. PerfilAcesso
+
+Representa um conjunto de permissões que pode ser associado a usuários.
+
+**Atributos:**
+
+- `id_perfil`: identificador único do perfil (PK).
+- `nome`: nome do perfil.
+- `descricao`: finalidade do perfil.
+- `ativo`: indica se o perfil pode ser associado a usuários.
+
+**Justificativa:** permite organizar as permissões por função e evitar a configuração individual de cada ação para cada usuário.
+
+### 2.8. Permissao
+
+Representa uma ação que pode ser autorizada no sistema.
+
+**Atributos:**
+
+- `id_permissao`: identificador único da permissão (PK).
+- `codigo`: código único da ação protegida.
+- `descricao`: descrição da ação autorizada.
+
+**Exemplos de códigos propostos:** `solicitacao.registrar`, `solicitacao.consultar`, `solicitacao.triar`, `solicitacao.atribuir`, `atendimento.atualizar`, `solicitacao.concluir`, `historico.consultar` e `acesso.perfis.gerenciar`.
+
+A lista definitiva de permissões deverá ser validada com o PO.
+
+### 2.9. UsuarioPerfil
+
+Representa a associação entre usuários e perfis de acesso.
+
+**Atributos:**
+
+- `id_usuario`: referência ao usuário (PK composta e FK).
+- `id_perfil`: referência ao perfil (PK composta e FK).
+- `data_vinculo`: data e hora da associação.
+- `ativo`: indica se a associação está vigente.
+
+**Justificativa:** permite que um usuário possua um ou mais perfis, caso essa possibilidade seja aprovada pelo PO.
+
+### 2.10. PerfilPermissao
+
+Representa as permissões concedidas a cada perfil.
+
+**Atributos:**
+
+- `id_perfil`: referência ao perfil (PK composta e FK).
+- `id_permissao`: referência à permissão (PK composta e FK).
+
+**Justificativa:** permite definir quais ações cada perfil pode executar sem duplicar permissões em diferentes registros de usuários.
+
+### 2.11. HistoricoAcesso
+
+Registra alterações administrativas nos perfis e nas permissões associadas aos usuários.
+
+**Atributos:**
+
+- `id_evento_acesso`: identificador único do evento (PK).
+- `id_usuario_executor`: referência ao usuário que realizou a alteração (FK).
+- `id_usuario_afetado`: referência ao usuário cuja associação foi alterada (FK).
+- `id_perfil`: referência ao perfil envolvido na alteração (FK).
+- `tipo_evento`: identifica a ação realizada, como associação ou remoção de perfil.
+- `data_evento`: data e hora da alteração.
+- `descricao`: detalhe complementar do evento, quando necessário.
+
+**Justificativa:** permite rastrear alterações de acesso e identificar quem realizou a ação, qual usuário foi afetado e quando ela ocorreu.
+
 ## 3. Relacionamentos e cardinalidades
 
 - **Usuario 1:N Solicitacao:** um usuário pode registrar várias solicitações; cada solicitação possui um solicitante.
@@ -120,6 +187,11 @@ Caso a Vértice utilize apenas uma equipe por usuário, esse relacionamento pode
 - **Solicitacao 1:N HistoricoSolicitacao:** uma solicitação pode possuir várias movimentações; cada movimentação pertence a uma solicitação.
 - **Usuario 1:N HistoricoSolicitacao:** um usuário pode registrar várias movimentações; cada movimentação identifica seu autor quando aplicável.
 - **Usuario N:M Equipe:** um usuário pode pertencer a várias equipes e uma equipe pode ter vários usuários, por meio de `Relacionamento UsuarioEquipe`.
+- **Usuario N:M PerfilAcesso:** um usuário pode possuir vários perfis, e um perfil pode estar associado a vários usuários, por meio de `UsuarioPerfil`.
+- **PerfilAcesso N:M Permissao:** um perfil pode possuir várias permissões, e uma permissão pode pertencer a vários perfis, por meio de `PerfilPermissao`.
+- **Usuario 1:N HistoricoAcesso:** um usuário pode executar várias alterações administrativas de acesso.
+- **Usuario 1:N HistoricoAcesso:** um usuário pode ser afetado por várias alterações de acesso.
+- **PerfilAcesso 1:N HistoricoAcesso:** um perfil pode aparecer em vários eventos de alteração de acesso.
 
 As chaves estrangeiras de responsável e equipe são opcionais enquanto a solicitação não tiver sido atribuída. As regras para exigir uma atribuição devem ser definidas conforme as transições de status.
 
@@ -137,6 +209,13 @@ erDiagram
     USUARIO o|--o{ HISTORICO_SOLICITACAO : registra
     USUARIO ||--o{ USUARIO_EQUIPE : participa
     EQUIPE ||--o{ USUARIO_EQUIPE : possui
+    USUARIO ||--o{ USUARIO_PERFIL : possui
+    PERFIL_ACESSO ||--o{ USUARIO_PERFIL : associado
+    PERFIL_ACESSO ||--o{ PERFIL_PERMISSAO : concede
+    PERMISSAO ||--o{ PERFIL_PERMISSAO : definida
+    USUARIO ||--o{ HISTORICO_ACESSO : executa
+    USUARIO ||--o{ HISTORICO_ACESSO : afetado
+    PERFIL_ACESSO ||--o{ HISTORICO_ACESSO : registrado
 ```
 
 O diagrama apresenta os relacionamentos principais, sem detalhar graficamente todos os atributos. A descrição das entidades e dos atributos acima complementa a representação.
@@ -181,6 +260,10 @@ Solicitações com histórico não devem ter seus registros removidos indiscrimi
 - Regras de retenção, auditoria e exclusão.
 - Perfis de acesso e permissões.
 - Necessidade de integração com cadastros corporativos existentes.
+- Definição da matriz de permissões por perfil e das restrições de acesso por unidade.
+- Definição da possibilidade de múltiplos perfis por usuário.
+- Definição dos responsáveis pela administração dos perfis.
+- Política de auditoria e retenção dos registros de alterações de acesso.
 
 ## 7. Consistência com os demais artefatos
 
