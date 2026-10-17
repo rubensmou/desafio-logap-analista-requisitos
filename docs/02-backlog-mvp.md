@@ -293,7 +293,7 @@ Esta definição é uma proposta e deverá ser alinhada ao processo de desenvolv
 
 ## 11. Relação com os demais artefatos
 
-- [Modelagem do processo](01-modelagem-processo.md)
+- [Modelagem do processo](01-processo-bpmn.md)
 - [Validações com o Product Owner](03-validacoes-product-owner.md)
 - [Modelagem de dados](04-modelagem-dados.md)
 
