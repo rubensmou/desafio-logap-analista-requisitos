@@ -239,22 +239,51 @@ As prioridades são propostas e deverão ser validadas com o Product Owner (PO).
 
 ### US12 — Controlar o acesso às funcionalidades
 
-**Prioridade:** Must have
+**Como** administrador do sistema,  
+**quero** gerenciar os perfis de acesso dos usuários,  
+**para** garantir que cada usuário execute somente as ações autorizadas para sua função.
 
-**História:** Como administrador, quero controlar o acesso às funcionalidades para garantir que cada usuário execute apenas ações autorizadas.
+**Prioridade:** Must have.
 
 **Critérios de aceitação:**
 
-- O sistema identifica o usuário antes de liberar funcionalidades protegidas.
-- Registro, triagem, atribuição, atendimento, conclusão e consulta respeitam as permissões.
-- Usuários sem autorização não conseguem executar ações restritas.
-- O sistema apresenta uma resposta adequada em caso de acesso negado.
-- Os perfis e as permissões seguem as definições aprovadas pelo PO.
+- O sistema deve identificar o usuário antes de permitir o acesso às funcionalidades protegidas.
+- O sistema deve permitir que usuários autorizados associem e removam perfis de acesso de outros usuários.
+- Cada perfil deve possuir permissões definidas para as funcionalidades do sistema, conforme a matriz aprovada pelo Product Owner.
+- O sistema deve verificar as permissões do usuário antes de executar ações protegidas, independentemente da exibição de botões na interface.
+- O sistema deve impedir ações não autorizadas e apresentar uma mensagem informando que o acesso não foi permitido.
+- A consulta e a alteração de solicitações devem respeitar as permissões do usuário e as restrições de acesso por unidade ou responsabilidade, quando aplicáveis.
+- Usuários inativos não devem executar ações protegidas.
+- O sistema deve registrar alterações nos perfis de acesso, identificando o responsável, o usuário afetado, a alteração realizada e a data e hora do evento.
+- Tentativas de ações não autorizadas não devem alterar os dados, o status ou o histórico operacional da solicitação.
+- O sistema não deve conceder permissões além das definidas para o perfil do usuário.
 
-**Regras relacionadas:** RN10 e regras de acesso a validar.
+**Regras de negócio relacionadas:** RN11.
 
-**Dependências:** definição dos perfis e das permissões.
+**Dependências:** identificação dos usuários, definição dos perfis de acesso, matriz de permissões e regras de acesso por unidade ou responsabilidade.
 
+### US13 — Cancelar solicitação de manutenção
+
+**Como** usuário autorizado,  
+**quero** cancelar uma solicitação de manutenção,  
+**para** interromper seu fluxo quando o atendimento não for mais necessário, mantendo o registro da decisão.
+
+**Prioridade:** Should have, sujeita à validação do Product Owner.
+
+**Critérios de aceitação:**
+
+- O sistema deve permitir o cancelamento somente a usuários com permissão para executar essa ação.
+- O sistema deve exigir o preenchimento do motivo do cancelamento antes de confirmar a operação.
+- O sistema deve solicitar a confirmação do usuário antes de efetivar o cancelamento.
+- Após a confirmação, o sistema deve atualizar o status da solicitação para `Cancelada`, desde que a transição seja permitida pelas regras de negócio.
+- O sistema deve registrar o cancelamento no histórico da solicitação, incluindo o status anterior, o novo status, o motivo, o usuário responsável e a data e hora da ação.
+- O cancelamento não deve excluir a solicitação nem apagar seus dados originais ou registros anteriores.
+- Após o cancelamento, o sistema deve impedir que a solicitação avance para as etapas de triagem, atribuição ou atendimento.
+- O sistema deve impedir o cancelamento em status não permitidos, conforme as regras definidas pelo Product Owner.
+
+**Regras de negócio relacionadas:** RN10.
+
+**Dependências:** definição dos perfis autorizados a cancelar solicitações e dos status em que o cancelamento será permitido.
 ## 8. Itens fora do MVP
 
 - Notificações automáticas por e-mail ou aplicativo.
