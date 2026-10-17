@@ -45,15 +45,15 @@ A solução propõe um fluxo único para registrar, analisar, direcionar e concl
 
 Essas funcionalidades poderão ser consideradas em versões futuras.
 
-## 5. Artefatos entregues
+## Artefatos da entrega
 
 | Artefato | Descrição |
 |---|---|
-| BPMN | Modelagem do processo de atendimento |
-| Backlog | Histórias de usuário e critérios de aceitação |
-| Validação com o PO | Questões para alinhamento com o Product Owner |
-| Modelo de dados | Entidades e seus relacionamentos |
-| Processo de trabalho | Etapas utilizadas na elaboração da proposta |
+| [01. Modelagem do processo (BPMN)](docs/01-processo-bpmn.md) | Fluxo de solicitação, triagem, atendimento e conclusão. |
+| [02. Backlog do MVP](docs/02-backlog-mvp.md) | Histórias de usuário, critérios de aceitação e priorização. |
+| [03. Validações com o Product Owner](docs/03-validacoes-product-owner.md) | Dúvidas, premissas e decisões que precisam de validação. |
+| [04. Modelo de dados](docs/04-modelagem-dados.md) | Entidades, atributos e relacionamentos do sistema. |
+| [05. Processo de trabalho](docs/05-processo-trabalho.md) | Abordagem utilizada para desenvolver a solução e organizar os artefatos. |
 
 ## 6. Premissas e limitações
 
