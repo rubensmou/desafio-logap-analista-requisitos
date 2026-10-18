@@ -113,3 +113,11 @@ Esta entrega foi construída a partir das informações disponibilizadas no enun
 Por isso, os fluxos, os status, as prioridades e a estrutura de dados representam uma proposta inicial, sujeita a refinamento.
 
 O objetivo é apresentar uma solução funcionalmente coerente, com escopo delimitado e requisitos que possam orientar o desenvolvimento e os testes.
+
+## 8. Utilização de Inteligência Artificial
+
+Utilizei ferramentas de inteligência artificial como apoio durante a análise e a elaboração da documentação, auxiliando na organização das informações, no refinamento dos requisitos, na revisão da clareza dos critérios de aceitação e na verificação da consistência entre os artefatos.
+
+As decisões sobre o escopo do MVP, as premissas adotadas, a estrutura do processo e a proposta de modelagem foram avaliadas criticamente ao longo do trabalho. As sugestões geradas foram revisadas e ajustadas conforme o contexto do desafio, mantendo como objetivo a coerência entre as necessidades do negócio, o backlog, o BPMN e o modelo de dados.
+
+Em um projeto real, utilizaria a IA como ferramenta complementar, sem substituir o levantamento com stakeholders, a validação dos requisitos com o Product Owner ou a responsabilidade do analista sobre as especificações entregues.
