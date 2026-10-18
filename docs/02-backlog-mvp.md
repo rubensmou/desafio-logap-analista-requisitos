@@ -218,7 +218,7 @@ As prioridades são propostas e deverão ser validadas com o Product Owner (PO).
 
 ### US11 — Consultar solicitações para acompanhamento gerencial
 
-**Prioridade:** Should have
+**Prioridade:** Must have.
 
 **História:** Como gestor, quero consultar solicitações e seus status para acompanhar os atendimentos e identificar demandas pendentes.
 
