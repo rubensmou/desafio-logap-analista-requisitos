@@ -136,6 +136,6 @@ O diagrama deve representar o fluxo descrito neste documento, com raias para Sol
 
 Devem ser utilizados eventos de início e fim, tarefas, gateways exclusivos para decisões e fluxos de sequência.
 
-O arquivo do diagrama deverá ser disponibilizado em ![Processo BPMN de Manutenção](diagrams/BPMN%20Desafio%20LogAp.drawio.png) ou em outro formato acessível, com um link para visualização.
+O arquivo do diagrama deverá ser disponibilizado em ![Processo BPMN de manutenção](./diagrams/BPMN-Desafio-LogAp.drawio.png) ou em outro formato acessível, com um link para visualização.
 
 
