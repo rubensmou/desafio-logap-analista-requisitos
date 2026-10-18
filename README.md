@@ -67,4 +67,11 @@ O escopo foi definido considerando o valor para o negócio, as necessidades dos 
 
 ## 8. Próximos passos
 
-Em um projeto real, a proposta seria validada com os stakeholders e o Product Owner, seguida do detalhamento das regras de negócio, protótipos e cenários de teste antes do desenvolvimento.
+Em um projeto real, a proposta seria validada com os stakeholders e o Product Owner, seguida do detalhamento das regras de negócio, protótipos e cenários 
+de teste antes do desenvolvimento.
+
+## 9. Protótipo navegável
+
+Link: https://vertice-or-gestao-de-solicitacoes--rweslleyms.replit.app
+
+Como complemento à documentação, desenvolvi um protótipo com auxílio de inteligência artificial, utilizando o repositório como referência. Ele ainda está em etapa de validação, e alguns recursos podem estar indisponíveis ou não funcionar conforme o esperado.Como a ferramenta utilizou os documentos do repositório, que contêm detalhamentos além do escopo estrito do MVP, algumas funcionalidades e elementos adicionais acabaram sendo incorporados ao protótipo. Por isso, ele ainda precisa de ajustes para ficar totalmente alinhado ao escopo priorizado no desafio. A documentação do repositório permanece como referência para a proposta funcional. 
